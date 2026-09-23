@@ -1,0 +1,862 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg: #070b14;
+    --bg-secondary: #0d1220;
+    --card: rgba(18, 25, 42, 0.78);
+    --card-solid: #11182a;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #f5f7ff;
+    --muted: #8d97ad;
+    --accent: #7c5cff;
+    --accent-light: #9b83ff;
+    --success: #4ade80;
+    --danger: #ff5c7a;
+    --shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background:
+        radial-gradient(circle at 80% 10%, rgba(124, 92, 255, 0.12), transparent 28%),
+        radial-gradient(circle at 20% 80%, rgba(76, 108, 255, 0.08), transparent 25%),
+        var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 245px;
+    height: 100vh;
+    padding: 28px 18px;
+    background: rgba(8, 12, 22, 0.88);
+    border-right: 1px solid var(--border);
+    backdrop-filter: blur(18px);
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 12px 35px;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.logo-icon {
+    color: var(--accent-light);
+    font-size: 25px;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.nav-item {
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    padding: 13px 14px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: left;
+    transition: 0.25s ease;
+}
+
+.nav-item span:first-child {
+    width: 20px;
+    text-align: center;
+    font-size: 17px;
+}
+
+.nav-item:hover {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateX(3px);
+}
+
+.nav-item.active {
+    color: white;
+    background: linear-gradient(
+        135deg,
+        rgba(124, 92, 255, 0.25),
+        rgba(124, 92, 255, 0.08)
+    );
+    box-shadow: inset 0 0 0 1px rgba(124, 92, 255, 0.16);
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding: 15px 12px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.sidebar-footer p {
+    color: var(--text);
+    font-weight: 600;
+}
+
+/* ================= MAIN ================= */
+
+.main-content {
+    margin-left: 245px;
+    min-height: 100vh;
+    padding: 28px 42px 60px;
+    max-width: 1500px;
+}
+
+/* ================= TOPBAR ================= */
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.topbar h2 {
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.small-text {
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.7px;
+    margin-bottom: 7px;
+}
+
+.theme-button {
+    width: 43px;
+    height: 43px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--card);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.25s ease;
+}
+
+.theme-button:hover {
+    border-color: rgba(124, 92, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+/* ================= SECTIONS ================= */
+
+.page-section {
+    display: none;
+    animation: sectionIn 0.35s ease;
+}
+
+.page-section.active-section {
+    display: block;
+}
+
+@keyframes sectionIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.page-heading {
+    margin-bottom: 28px;
+}
+
+.page-heading h1 {
+    font-size: 34px;
+    margin-bottom: 8px;
+}
+
+.page-heading > p:last-child {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* ================= HERO ================= */
+
+.hero-card {
+    min-height: 260px;
+    padding: 42px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+    border-radius: 25px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(124, 92, 255, 0.18),
+            rgba(18, 25, 42, 0.88) 55%
+        );
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-card::after {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    right: -90px;
+    top: -100px;
+    border-radius: 50%;
+    background: rgba(124, 92, 255, 0.16);
+    filter: blur(20px);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: clamp(32px, 5vw, 54px);
+    margin-bottom: 12px;
+    letter-spacing: -2px;
+}
+
+.hero-subtitle {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.time-display {
+    text-align: right;
+    position: relative;
+    z-index: 1;
+}
+
+#clock {
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+#date {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+/* ================= CARDS ================= */
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.16);
+    transition: 0.25s ease;
+}
+
+.card:hover {
+    border-color: rgba(124, 92, 255, 0.18);
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.section-heading h3 {
+    font-size: 18px;
+}
+
+.section-heading > span,
+#progressText,
+#completionPercentage {
+    color: var(--accent-light);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* ================= QUOTE ================= */
+
+.quote-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-label {
+    color: var(--accent-light);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    margin-bottom: 13px;
+}
+
+#quote {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #dce1ef;
+}
+
+/* ================= PROGRESS ================= */
+
+.productivity-card {
+    padding-bottom: 27px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 9px;
+    margin-top: 20px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.07);
+    overflow: hidden;
+}
+
+.progress-bar > div {
+    width: 0%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    transition: width 0.5s ease;
+}
+
+/* ================= TASKS ================= */
+
+.task-input {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.task-input input,
+.weather-search input {
+    flex: 1;
+    min-width: 0;
+    padding: 13px 15px;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text);
+    font-family: inherit;
+    transition: 0.25s ease;
+}
+
+.task-input input:focus,
+.weather-search input:focus {
+    border-color: rgba(124, 92, 255, 0.65);
+    box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.09);
+}
+
+.task-input button,
+.weather-search button,
+.setting-card button {
+    border: none;
+    padding: 0 19px;
+    border-radius: 11px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    color: white;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.task-input button:hover,
+.weather-search button:hover,
+.setting-card button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(124, 92, 255, 0.25);
+}
+
+.task-list {
+    list-style: none;
+    margin-top: 18px;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 14px;
+    margin-bottom: 9px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.025);
+    transition: 0.25s ease;
+}
+
+.task-item:hover {
+    background: rgba(255, 255, 255, 0.045);
+}
+
+.task-item.completed {
+    opacity: 0.6;
+}
+
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    color: var(--muted);
+}
+
+.task-checkbox {
+    width: 19px;
+    height: 19px;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.task-text {
+    flex: 1;
+    font-size: 14px;
+}
+
+.delete-task {
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 17px;
+    padding: 4px;
+}
+
+.delete-task:hover {
+    color: var(--danger);
+}
+
+/* ================= WEATHER PREVIEW ================= */
+
+.weather-preview {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+#homeWeather {
+    color: var(--muted);
+    font-size: 13px;
+    text-align: right;
+}
+
+/* ================= STATISTICS ================= */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    padding: 25px;
+    border: 1px solid var(--border);
+    border-radius: 19px;
+    background: var(--card);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.14);
+    transition: 0.25s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(124, 92, 255, 0.25);
+}
+
+.stat-icon {
+    display: inline-flex;
+    width: 38px;
+    height: 38px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 11px;
+    margin-bottom: 17px;
+    color: var(--accent-light);
+    background: rgba(124, 92, 255, 0.12);
+}
+
+.stat-card p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.stat-card h2 {
+    font-size: 30px;
+}
+
+/* ================= CHART ================= */
+
+.chart-card {
+    min-height: 390px;
+}
+
+.chart-container {
+    position: relative;
+    height: 290px;
+    margin-top: 25px;
+}
+
+.chart-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* ================= COMPLETION ================= */
+
+.progress-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.status-card {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(124, 92, 255, 0.11),
+            rgba(18, 25, 42, 0.75)
+        );
+}
+
+.status-card h3 {
+    margin: 5px 0 8px;
+    font-size: 20px;
+}
+
+.status-card > p:last-child {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* ================= WEATHER ================= */
+
+.weather-card {
+    max-width: 800px;
+}
+
+.weather-search {
+    display: flex;
+    gap: 10px;
+}
+
+.weather-result {
+    text-align: center;
+    padding: 40px 20px 20px;
+}
+
+.weather-icon {
+    font-size: 55px;
+    margin-bottom: 12px;
+}
+
+#weatherCity {
+    font-size: 27px;
+    margin-bottom: 7px;
+}
+
+#weatherDescription {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.temperature {
+    margin: 22px 0;
+    font-size: 52px;
+    font-weight: 800;
+}
+
+.weather-details {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.weather-details div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.weather-details span {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.weather-details strong {
+    font-size: 14px;
+}
+
+/* ================= SETTINGS ================= */
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.setting-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.setting-card h3 {
+    margin-bottom: 7px;
+}
+
+.setting-card p:last-child {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.setting-card button {
+    min-width: 125px;
+    min-height: 42px;
+}
+
+.setting-card .danger-button {
+    background: rgba(255, 92, 122, 0.12);
+    color: var(--danger);
+    border: 1px solid rgba(255, 92, 122, 0.2);
+}
+
+.setting-card .danger-button:hover {
+    background: rgba(255, 92, 122, 0.18);
+    box-shadow: none;
+}
+
+/* ================= LIGHT MODE ================= */
+
+body.light-mode {
+    --bg: #f4f6fb;
+    --bg-secondary: #ffffff;
+    --card: rgba(255, 255, 255, 0.86);
+    --card-solid: #ffffff;
+    --border: rgba(30, 40, 70, 0.1);
+    --text: #151a2b;
+    --muted: #697287;
+    --shadow: 0 18px 45px rgba(35, 45, 80, 0.1);
+
+    background:
+        radial-gradient(circle at 80% 10%, rgba(124, 92, 255, 0.1), transparent 28%),
+        var(--bg);
+}
+
+body.light-mode .sidebar {
+    background: rgba(248, 249, 253, 0.92);
+}
+
+body.light-mode .hero-card {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(124, 92, 255, 0.1),
+            rgba(255, 255, 255, 0.92)
+        );
+}
+
+body.light-mode #quote {
+    color: #343b50;
+}
+
+body.light-mode .task-item {
+    background: rgba(30, 40, 70, 0.025);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1000px) {
+
+    .sidebar {
+        width: 210px;
+    }
+
+    .main-content {
+        margin-left: 210px;
+        padding: 25px;
+    }
+
+    .hero-card {
+        padding: 32px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .settings-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 720px) {
+
+    .sidebar {
+        position: fixed;
+        width: 100%;
+        height: auto;
+        bottom: 0;
+        top: auto;
+        left: 0;
+        padding: 8px 10px;
+        border-right: none;
+        border-top: 1px solid var(--border);
+        background: rgba(8, 12, 22, 0.95);
+    }
+
+    .logo,
+    .sidebar-footer {
+        display: none;
+    }
+
+    .nav-menu {
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 3px;
+    }
+
+    .nav-item {
+        flex-direction: column;
+        justify-content: center;
+        gap: 3px;
+        padding: 7px 5px;
+        font-size: 9px;
+        border-radius: 9px;
+    }
+
+    .nav-item span:first-child {
+        font-size: 16px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 20px 15px 90px;
+    }
+
+    .topbar {
+        margin-bottom: 22px;
+    }
+
+    .hero-card {
+        min-height: auto;
+        padding: 27px 22px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 28px;
+    }
+
+    .time-display {
+        text-align: left;
+    }
+
+    #clock {
+        font-size: 30px;
+    }
+
+    .task-input,
+    .weather-search {
+        flex-direction: column;
+    }
+
+    .task-input button,
+    .weather-search button {
+        min-height: 44px;
+    }
+
+    .weather-preview {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #homeWeather {
+        text-align: left;
+    }
+
+    .setting-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .setting-card button {
+        width: 100%;
+    }
+
+    .chart-card {
+        min-height: 350px;
+    }
+
+    .chart-container {
+        height: 250px;
+    }
+
+    .weather-details {
+        gap: 30px;
+    }
+
+    .page-heading h1 {
+        font-size: 29px;
+    }
+}
+
+@media (max-width: 430px) {
+
+    .hero-content h1 {
+        font-size: 34px;
+    }
+
+    #clock {
+        font-size: 27px;
+    }
+
+    .card,
+    .stat-card {
+        padding: 20px;
+    }
+
+    .temperature {
+        font-size: 44px;
+    }
+}
